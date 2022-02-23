@@ -11,11 +11,23 @@
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { EnumCrudFormRole } from "./EnumCrudFormRole";
+import { IsEnum, IsOptional, ValidateNested } from "class-validator";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
-import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 @InputType()
 class CrudFormUpdateInput {
+  @ApiProperty({
+    required: false,
+    enum: EnumCrudFormRole,
+  })
+  @IsEnum(EnumCrudFormRole)
+  @IsOptional()
+  @Field(() => EnumCrudFormRole, {
+    nullable: true,
+  })
+  role?: "Admin" | "Employee" | "Manager" | null;
+
   @ApiProperty({
     required: false,
     type: () => UserWhereUniqueInput,
