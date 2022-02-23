@@ -82,6 +82,7 @@ export class CrudFormControllerBase {
       select: {
         createdAt: true,
         id: true,
+        role: true,
         updatedAt: true,
 
         user: {
@@ -124,6 +125,7 @@ export class CrudFormControllerBase {
       select: {
         createdAt: true,
         id: true,
+        role: true,
         updatedAt: true,
 
         user: {
@@ -165,6 +167,7 @@ export class CrudFormControllerBase {
       select: {
         createdAt: true,
         id: true,
+        role: true,
         updatedAt: true,
 
         user: {
@@ -235,6 +238,7 @@ export class CrudFormControllerBase {
         select: {
           createdAt: true,
           id: true,
+          role: true,
           updatedAt: true,
 
           user: {
@@ -277,6 +281,7 @@ export class CrudFormControllerBase {
         select: {
           createdAt: true,
           id: true,
+          role: true,
           updatedAt: true,
 
           user: {

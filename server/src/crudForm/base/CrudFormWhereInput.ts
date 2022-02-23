@@ -13,7 +13,8 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
+import { IsOptional, IsEnum, ValidateNested } from "class-validator";
+import { EnumCrudFormRole } from "./EnumCrudFormRole";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 @InputType()
 class CrudFormWhereInput {
@@ -27,6 +28,17 @@ class CrudFormWhereInput {
     nullable: true,
   })
   id?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumCrudFormRole,
+  })
+  @IsEnum(EnumCrudFormRole)
+  @IsOptional()
+  @Field(() => EnumCrudFormRole, {
+    nullable: true,
+  })
+  role?: "Admin" | "Employee" | "Manager";
 
   @ApiProperty({
     required: false,

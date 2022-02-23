@@ -11,8 +11,15 @@
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString, ValidateNested, IsOptional } from "class-validator";
+import {
+  IsDate,
+  IsString,
+  IsEnum,
+  IsOptional,
+  ValidateNested,
+} from "class-validator";
 import { Type } from "class-transformer";
+import { EnumCrudFormRole } from "./EnumCrudFormRole";
 import { User } from "../../user/base/User";
 @ObjectType()
 class CrudForm {
@@ -31,6 +38,17 @@ class CrudForm {
   @IsString()
   @Field(() => String)
   id!: string;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumCrudFormRole,
+  })
+  @IsEnum(EnumCrudFormRole)
+  @IsOptional()
+  @Field(() => EnumCrudFormRole, {
+    nullable: true,
+  })
+  role?: "Admin" | "Employee" | "Manager" | null;
 
   @ApiProperty({
     required: true,
